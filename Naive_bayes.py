@@ -31,7 +31,7 @@ features = tv.fit_transform(features).toarray()
 encoder = LabelEncoder()
 y = encoder.fit_transform(label)
 
-features_train, features_test, label_train, label_test = train_test_split(features, label, test_size = .10, random_state = 0)
+features_train, features_test, label_train, label_test = train_test_split(features, y, test_size = .10, random_state = 0)
 
 gnb = GaussianNB()
 gnb.fit(features_train, label_train)
