@@ -43,7 +43,7 @@ rating_data.columns
 
 
 import timeit as t
-
+####Use this method only
 start = t.timeit()
 sim1 = pd.DataFrame(index= rating_data.columns, columns= rating_data.columns)
 for i in range(0,len(data1.columns)-1):
@@ -55,7 +55,7 @@ for i in range(0,len(data1.columns)-1):
 end=t.timeit()
 print(end - start)
 
-########Alternative way to calculate similarity
+########Alternative way to calculate similarity(do not use)
 start = t.timeit()
 sim2 = []
 for i in range(0, len(data1.columns)-1):
@@ -67,4 +67,13 @@ for i in range(0, len(data1.columns)-1):
         sim2.append(cos)
 end = t.timeit()
 print(end-start)
+
+##recommending
+data_neighbors = pd.DataFrame(index = sim1.columns, columns = range(1,11))
+
+##For Recommendation
+for i in range(0,len(sim1.columns)):
+    data_neighbors.iloc[i,:] = sim1.iloc[:,i].sort_values(ascending=False)[1:11].index
+
+print(data_neighbors)
 
